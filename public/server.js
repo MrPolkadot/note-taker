@@ -12,8 +12,9 @@ console.log("starting");
 app.use(express.static(__dirname));
 //app.use(express.urlencoded({ extended: true }));
 
-
+app.get("/notes", (req, res) => res.sendFile(__dirname + "/notes.html"));
 app.get("*", (req, res) => res.sendFile(__dirname + "/index.html"));
+
 
 
 
