@@ -1,30 +1,7 @@
 [
 	{
-		"title": "asasas",
-		"text": "asasa",
-		"note_id": "609d6862-4e9f-4ac4-923d-2cbf42587792"
-	},
-	{
-		"title": "asa",
-		"text": "as",
-		"note_id": "f9f298d9-18d3-4a97-a5a6-ad32a8befa12"
-	},
-	{
-		"title": "sssss",
-		"text": "sssss",
-		"note_id": "79a20a76-5459-4e8e-b848-48bc7ea57ece"
-	},
-	{
-		"title": "ffff",
-		"text": "fffff",
-		"note_id": "030f6321-8e8e-42d4-9b7c-ccea195a309d"
-	},
-	{
-		"note_id": "804153ee-688c-400b-b8de-f4902b627aba"
-	},
-	{
-		"title": "hello",
-		"text": "world",
-		"note_id": "d27bafc9-2ac8-4449-824b-9373c01f989a"
+		"title": "Welcome",
+		"text": "Connected to localhost",
+		"note_id": "17493d6d-bdd6-481c-a030-514efa70cdc8"
 	}
 ]
