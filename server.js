@@ -20,7 +20,7 @@ app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 
 
-//Add comment
+//Reads the json file and parses it
 const noteData = fs.readFileSync("./db/db.json", "utf-8", (err, data) => {
     if (err) {
         console.log(err);
@@ -30,7 +30,8 @@ const noteData = fs.readFileSync("./db/db.json", "utf-8", (err, data) => {
 const notes = JSON.parse(noteData);
 
 
-//Add comment
+
+//Reads all of the notes and returns the notes to the client in json
 app.get("/api/notes", (req, res) => {
     fs.readFile("./db/db.json", "utf-8", (err, data) => {
         if (err) {
@@ -45,7 +46,7 @@ app.get("/api/notes", (req, res) => {
 
 
 
-//Add comment
+//Receives a new note to save on the request body, adds it to the db.json file, and then returns the new note to the client
 app.post("/api/notes", (req, res) => {
     const { title, text } = req.body;
     if (req.body) {
@@ -59,7 +60,6 @@ app.post("/api/notes", (req, res) => {
 
         fs.writeFileSync("./db/db.json", JSON.stringify(notes, null, "\t"), err => {
             if (err) throw err;
-            //return true;
         });
         res.json(notes);
     }
@@ -67,7 +67,7 @@ app.post("/api/notes", (req, res) => {
 })
 
 
-//
+//Creates a route to get a specific note with it's id and return it to the client
 app.get("/api/notes/:note_id", (req, res) => {
     if (req.params.note_id) {
         const noteId = req.params.note_id;
@@ -85,13 +85,13 @@ app.get("/api/notes/:note_id", (req, res) => {
 })
 
 
-//
+//Deletes note based on the note id given
 app.delete("/api/notes/:id", (req, res) => {
-    const id = req.params.id * 1;
-    const deleteNote = notes.find(el => el.id === id);
-    const index = notes.indexOf(deleteNote);
+    const id = req.params.id * 1; //Creates the id string type into a number type
+    const deleteNote = notes.find(el => el.id === id); //Returns the first id from the array that matches the input id
+    const index = notes.indexOf(deleteNote); //Returns the index of the found id
 
-    notes.splice(index, 1);
+    notes.splice(index, 1); //Deletes item(id) from the array
     fs.writeFileSync("./db/db.json", JSON.stringify(notes, null, "\t"), err => {
         if (err) throw err;
         //return true;
@@ -100,19 +100,19 @@ app.delete("/api/notes/:id", (req, res) => {
 })
 
 
-//
+//Route to return the notes.html file
 app.get("/notes", (req, res) =>
     res.sendFile(path.join(__dirname, "public/notes.html"))
 );
 
 
 
-//
+//Route to return the index.html file
 app.get("*", (req, res) =>
     res.sendFile(path.join(__dirname, "public/index.html"))
 );
 
 
 
-//
+//Listens to the port and deploys the server
 app.listen(PORT, () => console.log(`listening at http://localhost:${PORT}`));
