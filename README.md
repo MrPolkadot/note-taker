@@ -1,5 +1,9 @@
 # Note Taker
 
+Deployed on [Railway](https://railway.app/):
+
+- https://mr-polkadot-note-taker.up.railway.app/
+
 ![main page](public/assets/images/main-page.png)
 ![notes](public/assets/images/notes.png)
 
